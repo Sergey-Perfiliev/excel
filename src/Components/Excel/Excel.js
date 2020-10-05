@@ -14,9 +14,9 @@ export class Excel {
 			const component = new Component($el)
 			// eslint-disable-next-line no-debugger
 			// debugger
-			if (component.name) {
-				window['c' + component.name] = component
-			}
+			// if (component.name) {
+			// 	window['c' + component.name] = component
+			// }
 			$el.html(component.toHTML())
 			$root.append($el)
 			return component
