@@ -20,9 +20,9 @@ const jsLoaders = () => {
     }
   ]
 
-    isDev ? loaders.push('eslint-loader') : null
+  isDev ? loaders.push('eslint-loader') : null
 
-    return loaders
+  return loaders
 }
 
 module.exports = {
