@@ -90,6 +90,11 @@ class DOM {
 		}
 		return this.data.id
 	}
+
+	focus() {
+		this.$el.focus()
+		return this
+	}
 }
 
 $('div').html('<h1>Test</h1>').clear()

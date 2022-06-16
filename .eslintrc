@@ -16,7 +16,8 @@
 				"no-trailing-spaces": "off",
 				"padded-blocks": "off",
 				"indent": "off",
-				"arrow-parens": "off"
+				"arrow-parens": "off",
+				"object-curly-spacing": "off"
 				
     },
     "extends": ["eslint:recommended", "google"]

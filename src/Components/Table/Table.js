@@ -1,9 +1,9 @@
-import {ExcelComponent} from '@core/ExcelComponent'
-import {matrix, shouldResize, shouldSelect} from './table.functions'
-import {resizeHandler} from './table.resize'
-import {TableSelection} from './table.selection'
-import {createTable} from './table.template'
-import {$} from '@core/dom'
+import { ExcelComponent } from '@core/ExcelComponent'
+import { isCell, matrix, nextSelector, shouldResize } from './table.functions'
+import { resizeHandler } from './table.resize'
+import { TableSelection } from './table.selection'
+import { createTable } from './table.template'
+import { $ } from '@core/dom'
 
 export class Table extends ExcelComponent {
 	static className = 'excel__table'
@@ -11,7 +11,7 @@ export class Table extends ExcelComponent {
 	constructor($root) {
 		super($root, {
 			name: 'Table',
-			listeners: ['mousedown']
+			listeners: ['mousedown', 'keydown']
 		})
 	}
 
@@ -22,7 +22,7 @@ export class Table extends ExcelComponent {
 	prepare() {
 		this.selection = new TableSelection(this.$root)
 	}
-	
+
 	init() {
 		super.init()
 
@@ -33,15 +33,33 @@ export class Table extends ExcelComponent {
 	onMousedown(event) {
 		if (shouldResize(event)) {
 			resizeHandler(this.$root, event)
-		} else if (shouldSelect(event)) {
+		} else if (isCell(event)) {
 			const $target = $(event.target)
 			if (event.shiftKey) {
 				const $cells = matrix($target, this.selection.current)
 					.map(id => this.$root.find(`[data-id="${id}"]`))
-				this.selection.selectGroup($cells)								
+				this.selection.selectGroup($cells)
 			} else {
 				this.selection.select($target)
 			}
+		}
+	}
+
+	onKeydown(event) {
+		const keys = [
+			'Enter',
+			'Tab',
+			'ArrowLeft',
+			'ArrowRight',
+			'ArrowDown',
+			'ArrowUp'
+		]
+		const { key } = event
+		if (keys.includes(key) && !event.shiftKey) {
+			event.preventDefault()
+			const id = this.selection.current.id(true)
+			const $next = this.$root.find(nextSelector(key, id))
+			this.selection.select($next)
 		}
 	}
 }
