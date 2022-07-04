@@ -3,7 +3,7 @@ import {Formula} from './Components/Formula/Formula';
 import {Header} from './Components/Header/Header';
 import {Table} from './Components/Table/Table';
 import {Toolbar} from './Components/Toolbar/Toolbar';
-import { Store } from './core/createStore';
+import { Store } from './core/Store';
 import { storage } from './core/utils';
 import './scss/index.scss'
 import { initialState } from './store/initialState';
