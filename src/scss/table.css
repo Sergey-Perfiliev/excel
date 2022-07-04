@@ -1,0 +1,116 @@
+.excel__table {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 98px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.excel__table .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-height: 20px;
+  height: 24px;
+}
+
+.excel__table .row-info {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 40px;
+  height: 100%;
+  border: 1px solid #c0c0c0;
+  background-color: #f8f9fa;
+  border-top: none;
+}
+
+.excel__table .row-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.excel__table .column {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f8f9fa;
+  min-width: 40px;
+  width: 120px;
+  border: 1px solid #c0c0c0;
+  border-top: 0;
+  border-left: 0;
+  height: 100%;
+}
+
+.excel__table .cell {
+  min-width: 40px;
+  padding: 5px;
+  width: 120px;
+  height: 100%;
+  border: 1px solid #e2e3e3;
+  border-top: 0;
+  border-left: 0;
+  color: #111111;
+  white-space: nowrap;
+  outline: none;
+  cursor: default;
+}
+
+.excel__table .cell.selected {
+  border: none;
+  outline: 2px solid #3c74ff;
+  z-index: 2;
+}
+
+.excel__table .col-resize, .excel__table .row-resize {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  background-color: #3c74ff;
+  z-index: 1000;
+}
+
+.excel__table .col-resize:hover, .excel__table .row-resize:hover {
+  opacity: 1 !important;
+}
+
+.excel__table .col-resize {
+  top: 0;
+  width: 4px;
+}
+
+.excel__table .col-resize:hover {
+  cursor: col-resize;
+}
+
+.excel__table .row-resize {
+  left: 0;
+  height: 4px;
+}
+
+.excel__table .row-resize:hover {
+  cursor: row-resize;
+}
+/*# sourceMappingURL=table.css.map */
