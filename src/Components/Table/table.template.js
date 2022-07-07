@@ -1,3 +1,7 @@
+import { defaultStyles } from '../../constants'
+import { parse } from '../../core/parse'
+import { toInlineStyles } from '../../core/utils'
+
 const SYMBOL_CODES = {
 	A: 65,
 	Z: 90
@@ -17,8 +21,12 @@ function getHeight(state, index) {
 function toCell(state, row) {
 	return function(_, col) {
 		const cellId = `${row}:${col}`
-		const text = state.dataState[cellId] || ''
+		const data = state.dataState[cellId] || ''
 		const width = getWidth(state.colState, col)
+		const styles = toInlineStyles({
+			...defaultStyles,
+			...state.stylesState[cellId]	
+		})
 		return `
 			<div 
 				class="cell" 
@@ -26,8 +34,9 @@ function toCell(state, row) {
 				data-type="cell"
 				data-col="${col}"
 				data-id="${cellId}"
-				style="width: ${width}">
-				${text}
+				data-value="${data}"
+				style="${styles};width: ${width}">
+				${parse(data)}
 			</div>
 		`
 	}
