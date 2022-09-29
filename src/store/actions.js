@@ -1,5 +1,5 @@
 import {
-	APPLY_STYLE, CHANGE_STYLES,
+	APPLY_STYLE, CHANGE_OPENING_DATE, CHANGE_STYLES,
 	CHANGE_TEXT, CHANGE_TITLE, TABLE_RESIZE
 } from './types'
 
@@ -35,5 +35,11 @@ export function changeTitle(data) {
 	return {
 		type: CHANGE_TITLE,
 		data
+	}
+}
+
+export function changeOpeningDate() {
+	return {
+		type: CHANGE_OPENING_DATE,
 	}
 }
