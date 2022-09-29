@@ -13,12 +13,15 @@ export class TableSelection {
 		this.group.forEach($cell => $cell.removeClass(TableSelection.className))
 		this.group = []
 	}
-	
+
 	get ids() {
 		return this.group.map($cell => $cell.id())
 	}
 
 	select($element) {
+		if ($element.text()) {
+			$element.data.value = $element.text()
+		}
 		this.clearSelection()
 		this.group.push($element)
 		$element.focus().addClass(TableSelection.className)
